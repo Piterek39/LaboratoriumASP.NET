@@ -29,11 +29,7 @@ namespace Laboratorium_3.Controllers
             return View();
         }
 
-       /* [HttpGet]
-        public String Update(int? id)
-        {
-            return "Edycja " + id;
-        }*/
+    
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -53,11 +49,23 @@ namespace Laboratorium_3.Controllers
         public IActionResult Details(int id) 
         {
             return View(_contacts[id]);
-        }
+        }     
         [HttpGet]
         public IActionResult Delete(int id)
         {
             return View(_contacts[id]);
         }
+        [HttpGet]
+        public IActionResult Delete2(int id)
+        {
+            if (_contacts.ContainsKey(id))
+            {
+                _contacts.Remove(id);
+                return RedirectToAction("Index");
+            }
+            // Możesz obsłużyć błąd, jeśli kontakt o podanym ID nie istnieje.
+            return RedirectToAction("Index");
+        }
+        
     }
 }
