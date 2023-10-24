@@ -5,9 +5,17 @@ namespace Laboratorium_3.Controllers
 {
     public class ContactController : Controller
     {
-        static readonly Dictionary<int, Contact> _contacts=new Dictionary<int, Contact>();
-        static int index = 1;
-        public IActionResult Index()
+        private readonly IContactService _contactService;
+        public ContactController(IContactService contactService)
+        {
+            _contactService = contactService;
+        }
+       /* static readonly Dictionary<int, Contact> _contacts=new Dictionary<int, Contact>()
+        {
+            {1, new Contact(){Id=1, Name="Karol", Email="karol@op.pl" } }
+        } ;
+        static int index = 1;*/
+        /*public IActionResult Index()
         {
             return View(_contacts);
         }
@@ -27,20 +35,43 @@ namespace Laboratorium_3.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }*/
+        public IActionResult Index()
+        {
+            return View(_contactService.FindAll());
         }
 
-    
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Contact model)
+        {
+            if (ModelState.IsValid)
+            {
+                _contactService.Add(model);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
         [HttpGet]
         public IActionResult Update(int id)
         {
-                return View(_contacts[id]);               
+                return View(_contactService.FindById(id));               
         }
         [HttpPost]
         public IActionResult Update(Contact model)
         {
             if(ModelState.IsValid) 
             {
-                _contacts[model.Id] = model;
+                _contactService.Update(model);
                 return RedirectToAction("Index");
             }
             return View();
@@ -48,19 +79,19 @@ namespace Laboratorium_3.Controllers
         [HttpGet]
         public IActionResult Details(int id) 
         {
-            return View(_contacts[id]);
+            return View(_contactService.FindById(id));
         }     
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            return View(_contacts[id]);
+            return View(_contactService.FindById(id));
         }
         [HttpGet]
         public IActionResult Delete2(int id)
         {
-            if (_contacts.ContainsKey(id))
+            if (ModelState.IsValid)
             {
-                _contacts.Remove(id);
+                _contactService.Delete(id);
                 return RedirectToAction("Index");
             }
             // Możesz obsłużyć błąd, jeśli kontakt o podanym ID nie istnieje.
