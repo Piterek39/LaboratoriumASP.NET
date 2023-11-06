@@ -1,3 +1,5 @@
+using Laboratorium_3___PostApp.Models;
+
 namespace Laboratorium_3___PostApp
 {
     public class Program
@@ -8,7 +10,7 @@ namespace Laboratorium_3___PostApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddSingleton<IPostService, MemoryPostService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -9,33 +9,7 @@ namespace Laboratorium_3.Controllers
         public ContactController(IContactService contactService)
         {
             _contactService = contactService;
-        }
-       /* static readonly Dictionary<int, Contact> _contacts=new Dictionary<int, Contact>()
-        {
-            {1, new Contact(){Id=1, Name="Karol", Email="karol@op.pl" } }
-        } ;
-        static int index = 1;*/
-        /*public IActionResult Index()
-        {
-            return View(_contacts);
-        }
-        [HttpGet]
-        public IActionResult Create()
-        { 
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create(Contact model)
-        {
-            if(ModelState.IsValid) 
-            {
-                //zapisz obiekt do bazy/kolekcji albo wykonaj operacje
-                model.Id = index++;
-                _contacts[model.Id] = model;
-                return RedirectToAction("Index");
-            }
-            return View();
-        }*/
+        }      
         public IActionResult Index()
         {
             return View(_contactService.FindAll());
