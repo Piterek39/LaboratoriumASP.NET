@@ -1,5 +1,6 @@
 using Data;
 using Laboratorium_3.Models;
+using System.Xml.Linq;
 
 namespace Laboratorium_3
 {
@@ -10,11 +11,11 @@ namespace Laboratorium_3
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews();   
             builder.Services.AddDbContext<AppDbContext>();
             builder.Services.AddTransient<IContactService, EFContactService>();
            // builder.Services.AddSingleton<IContactService, MemoryContactService>();
-            builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
+           // builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

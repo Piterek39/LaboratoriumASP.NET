@@ -1,4 +1,4 @@
-﻿using Data.Entities;
+﻿using PostData.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,14 +10,14 @@ namespace Data
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<ContactEntity> Contacts { get; set; }
+        public DbSet<PostEntity> Posts { get; set; }
         //public DbSet Contacts { get; set; }
         private string DbPath { get; set; }
         public AppDbContext()
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = Path.Join(path, "contacts.db");
+            DbPath = Path.Join(path, "posts.db");
             //DbPath = System.IO.Path.Join(path, "contacts.db");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options) =>
@@ -25,9 +25,9 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ContactEntity>().HasData(
-                new ContactEntity() { Id = 1, Name = "Adam", Email = "adam@wsei.edu.pl", Phone = "127813268163", Birth = new DateTime(2000, 10, 10) },
-                new ContactEntity() { Id = 2, Name = "Ewa", Email = "ewa@wsei.edu.pl", Phone = "293443823478", Birth = new DateTime(1999, 8, 10) }
+            modelBuilder.Entity<PostEntity>().HasData(
+                new PostEntity() { Id = 1, Content = "Pierwszy post", Autor = "adam@wsei.edu.pl", PostDate = new DateTime(2000, 10, 10), Tag="#pierwszypost", Comment="ciekawy post" },
+                new PostEntity() { Id = 2, Content = "Drugi post", Autor = "elon@wsei.edu.pl", PostDate = new DateTime(2000, 10, 10), Tag = "#drugipost", Comment = "nudny post" }
             );
         }
     }
