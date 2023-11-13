@@ -1,7 +1,7 @@
 ﻿using PostData.Entities;
 namespace Laboratorium_3___PostApp.Models
 {
-    public class ContactMapper
+    public class PostMapper
     {
         public static Post FromEntity(PostEntity entity)
         {

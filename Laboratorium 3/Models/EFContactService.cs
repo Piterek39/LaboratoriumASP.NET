@@ -16,6 +16,7 @@ namespace Laboratorium_3.Models
         public int Add(Contact contact)
         {
             var e = _context.Contacts.Add(ContactMapper.ToEntity(contact));
+            e.Entity.Created=DateTime.Now;
             _context.SaveChanges();
             return e.Entity.Id;
         }

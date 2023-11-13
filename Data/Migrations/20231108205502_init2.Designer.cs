@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231108205502_init2")]
+    partial class init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -46,9 +49,8 @@ namespace Data.Migrations
                         .HasMaxLength(12)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Priority")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Priority")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -59,21 +61,21 @@ namespace Data.Migrations
                         {
                             Id = 1,
                             Birth = new DateTime(2000, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Created = new DateTime(2020, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "adam@wsei.edu.pl",
                             Name = "Adam",
                             Phone = "127813268163",
-                            Priority = "Niski"
+                            Priority = 0
                         },
                         new
                         {
                             Id = 2,
                             Birth = new DateTime(1999, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Created = new DateTime(2021, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ewa@wsei.edu.pl",
                             Name = "Ewa",
                             Phone = "293443823478",
-                            Priority = "Normalny"
+                            Priority = 0
                         });
                 });
 #pragma warning restore 612, 618

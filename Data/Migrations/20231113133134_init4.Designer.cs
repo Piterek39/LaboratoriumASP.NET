@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231113133134_init4")]
+    partial class init4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -63,7 +66,7 @@ namespace Data.Migrations
                             Email = "adam@wsei.edu.pl",
                             Name = "Adam",
                             Phone = "127813268163",
-                            Priority = "Niski"
+                            Priority = "Low"
                         },
                         new
                         {
@@ -73,7 +76,7 @@ namespace Data.Migrations
                             Email = "ewa@wsei.edu.pl",
                             Name = "Ewa",
                             Phone = "293443823478",
-                            Priority = "Normalny"
+                            Priority = "Normal"
                         });
                 });
 #pragma warning restore 612, 618

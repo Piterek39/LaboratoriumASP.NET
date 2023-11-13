@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-
+using Data.Entities;
 namespace Laboratorium_3.Models
 {
     public class Contact

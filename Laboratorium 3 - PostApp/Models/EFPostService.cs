@@ -16,6 +16,7 @@ namespace Laboratorium_3___PostApp.Models
         public int Add(Post contact)
         {
             var e = _context.Posts.Add(PostMapper.ToEntity(contact));
+            e.Entity.PostDate = DateTime.Now;
             _context.SaveChanges();
             return e.Entity.Id;
         }
