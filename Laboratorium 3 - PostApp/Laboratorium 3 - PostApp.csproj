@@ -7,4 +7,8 @@
     <RootNamespace>Laboratorium_3___PostApp</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PostData\PostData.csproj" />
+  </ItemGroup>
+
 </Project>
