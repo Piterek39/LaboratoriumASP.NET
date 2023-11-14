@@ -1,5 +1,6 @@
 ﻿using Data.Entities;
 using Data;
+using Data.Models;
 using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Laboratorium_3.Models
@@ -47,6 +48,10 @@ namespace Laboratorium_3.Models
             ContactEntity entity = ContactMapper.ToEntity(contact);
             _context.Update(entity);
             _context.SaveChanges();    
+        }
+        public List<OrganizationEntity> FindAllOrganizations()
+        {
+            return _context.Organizations.ToList();           
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Laboratorium_3.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Laboratorium_3.Controllers
 {
@@ -15,10 +16,24 @@ namespace Laboratorium_3.Controllers
             return View(_contactService.FindAll());
         }
 
-        [HttpGet]
+       /* [HttpGet]
         public IActionResult Create()
         {
             return View();
+        }*/
+        [HttpGet]
+        public ActionResult Create()
+        {
+            Contact model = new Contact();
+            model.Organizations = _contactService
+                .FindAllOrganizations()
+                .Select(oe => new SelectListItem() { Value = oe.Id.ToString(), Text = oe.Title, })
+                .ToList();
+            model.Organizations =
+                //.FindAllOrganizations()
+                .Select(oe => new SelectListItem() { Value = "", Text = "Brak", })
+                .ToList();             
+            return View(model);
         }
 
         [HttpPost]

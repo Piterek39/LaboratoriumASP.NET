@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using Data.Entities;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace Laboratorium_3.Models
 {
     public class Contact
@@ -25,5 +28,10 @@ namespace Laboratorium_3.Models
         public Priority Priority { get; set; }
         [HiddenInput]
         public DateTime Created { get; set; }
+        [HiddenInput]
+        public int? OrganizationId { get; set; }
+
+        [ValidateNever]
+        public List<SelectListItem> Organizations { get; set; }
     }
 }

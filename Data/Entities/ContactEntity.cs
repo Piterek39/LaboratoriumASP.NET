@@ -27,5 +27,7 @@ namespace Data.Entities
         public DateTime Birth { get; set; }
         public string Priority { get; set; }
         public DateTime Created {  get; set; }
+        public OrganizationEntity Organization { get; set; }
+        public int? OrganizationId { get; set; } 
     }
 }

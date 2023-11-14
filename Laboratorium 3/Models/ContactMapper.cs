@@ -13,6 +13,7 @@ namespace Laboratorium_3.Models
                 Email = entity.Email,
                 Phone = entity.Phone,
                 Birth = entity.Birth,
+                OrganizationId=entity.OrganizationId,
                 Priority=(Priority)Enum.Parse(typeof(Priority),(entity.Priority)),              
                 Created=entity.Created,
             };
@@ -27,6 +28,7 @@ namespace Laboratorium_3.Models
                 Email = model.Email,
                 Phone = model.Phone,
                 Birth = model.Birth,
+                OrganizationId=model.OrganizationId,
                 Priority=model.Priority.ToString(), 
                 Created = model.Created,
             };
