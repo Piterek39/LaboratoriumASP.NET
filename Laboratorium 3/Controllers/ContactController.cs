@@ -1,9 +1,11 @@
 ﻿using Laboratorium_3.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Laboratorium_3.Controllers
 {
+    [Authorize]
     public class ContactController : Controller
     {
         private readonly IContactService _contactService;
@@ -29,10 +31,10 @@ namespace Laboratorium_3.Controllers
                 .FindAllOrganizations()
                 .Select(oe => new SelectListItem() { Value = oe.Id.ToString(), Text = oe.Title, })
                 .ToList();
-            model.Organizations =
+           /* model.Organizations =
                 //.FindAllOrganizations()
                 .Select(oe => new SelectListItem() { Value = "", Text = "Brak", })
-                .ToList();             
+                .ToList();    */         
             return View(model);
         }
 

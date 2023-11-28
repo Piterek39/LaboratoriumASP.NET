@@ -19,7 +19,7 @@ namespace Laboratorium_3.Models
             var e = _context.Contacts.Add(ContactMapper.ToEntity(contact));
             e.Entity.Created=DateTime.Now;
             _context.SaveChanges();
-            return e.Entity.Id;
+            return e.Entity.Id;         
         }
 
         public void Delete(int id)
