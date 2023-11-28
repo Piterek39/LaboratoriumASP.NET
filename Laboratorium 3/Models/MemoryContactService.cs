@@ -43,5 +43,10 @@ namespace Laboratorium_3.Models
         {
             _items[item.Id] = item;
         }
+
+        PagingList<Contact> IContactService.FindPage(int page, int size)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
