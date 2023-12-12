@@ -34,6 +34,14 @@ namespace Laboratorium_3
                 app.UseHsts();
             }
 
+
+
+            app.UseRouting();
+            app.UseMiddleware<LastVisitCookie>();
+            app.UseAuthentication();
+
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
