@@ -2,6 +2,7 @@
 using Data;
 using Data.Models;
 using Microsoft.Extensions.Logging.Abstractions;
+using System.Linq;
 
 namespace Laboratorium_3.Models
 {
@@ -53,7 +54,7 @@ namespace Laboratorium_3.Models
         {
             return _context.Organizations.ToList();           
         }
-        public PagingList<Contact> FindPage(int page, int size)
+       public PagingList<Contact> FindPage(int page, int size)
        {
            /* int totalCount = _context.Contacts.Count();
             List<Contact> contacts = _context.Contacts
@@ -68,10 +69,11 @@ namespace Laboratorium_3.Models
        } 
         /*public PagingList<Contact> FindPage(int page, int size)
         {
+           
             return PagingList<Contact>.Create(
                     (p, s) => 
                     _context.Contacts
-                            .OrderBy(b => b.)
+                            .OrderBy(b => b.Name)
                             .Skip((p - 1) * size)
                             .Take(s)
                             .ToList(),
